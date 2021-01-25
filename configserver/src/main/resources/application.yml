@@ -1,0 +1,25 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      discovery:
+        enable: true
+      server:
+        git:
+          uri: https://github.com/francomatheus/spring-boot-reactive-microservice-messaging
+          searchPaths: config-repo
+      fail-fast: true
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    registerWithEureka: true
+    fetchRegistry: true
+    serverviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+

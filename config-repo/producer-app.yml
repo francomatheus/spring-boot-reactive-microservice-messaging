@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: producer-app
+
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    registerWithEureka: true
+    fetchRegistry: true
+    serverviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8082

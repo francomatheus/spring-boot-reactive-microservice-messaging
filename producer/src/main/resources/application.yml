@@ -1,0 +1,20 @@
+#spring:
+#  application:
+#    name: producer-app
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017
+#      username: root
+#      password: example
+#
+#eureka:
+#  client:
+#    instance:
+#      hostname: localhost
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serverviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
+#
+#server:
+#  port: 8082

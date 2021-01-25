@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: consumer-app
+  config:
+    discovery:
+      enabled: true
+    server:
+      uri: http://configserver
+      label: main
+      fail-fast: true
