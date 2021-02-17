@@ -1,6 +1,10 @@
 spring:
   application:
     name: producer-app
+  data:
+    mongodb:
+      uri: mongodb://root:example@localhost:27017
+      database: producer
 
 eureka:
   client:
@@ -13,3 +17,45 @@ eureka:
 
 server:
   port: 8082
+
+cloud:
+  aws:
+    region:
+      static: ${AWS_REGION}
+    stack:
+      auto: false
+
+aws:
+  cloud:
+    accessKey: ${AWS_ACCESS_KEY}
+    secretKey: ${AWS_SECRET_KEY}
+    region: ${AWS_REGION}
+    topic: "sns-topic-terraform"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, prometheus, health, info
+        exclude: env,beans
+    prometheus:
+      enabled: true
+  metrics:
+    export: 
+      prometheus: 
+        enabled: true
+
+opentracing:
+  jaeger:
+    udp-sender:
+      host: localhost
+      port: 5775
+    enabled: ${JAEGER_ENABLED:true}
+    service-name: ${spring.application.name}
+    http-sender.url: ${JAEGER_ENDPOINT:http://localhost:14268/api/traces}
+    probabilistic-sampler:
+      sampling-rate: ${JAEGER_SAMPLER:1}
+  spring:
+    cloud:
+      jdbc:
+        enabled: false

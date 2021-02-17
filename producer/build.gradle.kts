@@ -19,16 +19,25 @@ extra["springCloudVersion"] = "Hoxton.SR9"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+	implementation("io.micrometer:micrometer-registry-prometheus")
+	implementation("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9")
+
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-//	implementation("org.springframework.cloud:spring-cloud-starter-aws")
-//	implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
+
+	implementation("com.amazonaws:aws-java-sdk-bom:1.11.955")
+	implementation("com.amazonaws:aws-java-sdk-sqs:1.11.955")
+
+	implementation("org.springframework.cloud:spring-cloud-starter-aws")
+	implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
+
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -40,6 +49,7 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+		mavenBom("com.amazonaws:aws-java-sdk-bom:1.11.955")
 	}
 }
 

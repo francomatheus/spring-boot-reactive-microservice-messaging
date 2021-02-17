@@ -1,10 +1,10 @@
-#spring:
-#  application:
-#    name: discovery-app
-#  config:
-#    discovery:
-#      enabled: true
-#    server:
-#      uri: http://configserver
-#      label:
-#      fail-fast: true
+spring:
+  application:
+    name: discovery-app
+  config:
+    discovery:
+      enabled: true
+    server:
+      uri: http://localhost:8888
+      label:
+      fail-fast: true

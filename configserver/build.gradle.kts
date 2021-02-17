@@ -19,10 +19,16 @@ extra["springCloudVersion"] = "Hoxton.SR9"
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
+
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
 	implementation("org.springframework.cloud:spring-cloud-config-server")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
+
+	implementation("io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.9")
+	runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}

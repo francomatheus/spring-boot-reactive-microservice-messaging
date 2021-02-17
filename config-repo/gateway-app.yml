@@ -2,13 +2,15 @@ spring:
   application:
     name: gateway-app
 
-#  gateway:
-#    routes:
-#      - id:
-#        uri:
-#        predicates:
-#          - Path=
-#          - Methods=
+  cloud:
+    gateway:
+      routes:
+
+        - id: send_message
+          uri: http://localhost:8082
+          predicates:
+            - Path=/v1/producer
+            - Method=POST
 
 eureka:
   client:
@@ -26,4 +28,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: metrics, prometheus, health
+        include: metrics, prometheus, health, info
+        exclude: env,beans
+    prometheus:
+      enabled: true
+  metrics:
+    export: 
+      prometheus: 
+        enabled: true
